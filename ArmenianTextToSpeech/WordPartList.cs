@@ -8,9 +8,9 @@ namespace ArmenianTextToSpeech
     public class WordPartList : List<WordPart>
     {
         /// <summary>
-        /// Calculates all word parts rating sum
+        /// Calculates total rating for all word parts in the list
         /// </summary>
-        /// <returns>Word parts rating sum</returns>
+        /// <returns>Total word parts rating</returns>
         public int CalculateRating()
         {
             var rating = 0;

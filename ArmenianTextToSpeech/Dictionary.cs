@@ -9,31 +9,31 @@ namespace ArmenianTextToSpeech
     public class Dictionary
     {
         /// <summary>
-        /// Dictionary parts
+        /// Dictionary word parts
         /// </summary>
-        public WordPartList Items { get; private set; }
+        public WordPartList WordParts { get; private set; }
 
         /// <summary>
-        /// Loads parts for the dictionary using given json dictionary string
+        /// Loads word parts for the dictionary using given json dictionary string
         /// </summary>
         /// <param name="dictionary">Dictionary json string</param>
         public void LoadParts(string dictionary)
         {
-            Items = JsonConvert.DeserializeObject<WordPartList>(dictionary);
-            foreach (var item in Items)
+            WordParts = JsonConvert.DeserializeObject<WordPartList>(dictionary);
+            foreach (var item in WordParts)
             {
                 item.PartCorrection();
             }
         }
 
         /// <summary>
-        /// Get part object by given part value
+        /// Get word part object by part in armenian value
         /// </summary>
-        /// <param name="part">Part value</param>
-        /// <returns>Part object</returns>
+        /// <param name="part">Part in armenian value</param>
+        /// <returns>Word part object</returns>
         public WordPart GetPart(string part)
         {
-            return Items.FirstOrDefault(i => i.PartInArmenian.ToLower() == part);
+            return WordParts.FirstOrDefault(i => i.PartInArmenian.ToLower() == part);
         }
     }
 }
