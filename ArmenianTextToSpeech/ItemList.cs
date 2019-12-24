@@ -8,17 +8,17 @@ namespace ArmenianTextToSpeech
     public class ItemList : List<Item>
     {
         /// <summary>
-        /// Calculates all parts rates sum
+        /// Calculates all parts rating sum
         /// </summary>
-        /// <returns>Parts rates sum</returns>
-        public int CalculateRate()
+        /// <returns>Parts rating sum</returns>
+        public int CalculateRating()
         {
-            var rate = 0;
+            var rating = 0;
             foreach (var item in this)
             {
-                rate += item.Rate;
+                rating += item.Rating;
             }
-            return rate;
+            return rating;
         }
     }
 }

@@ -105,9 +105,9 @@ namespace ArmenianTextToSpeech
                     }
                 }
 
-                var rate1 = parts1.CalculateRate();
-                var rate2 = parts1.CalculateRate();
-                if (rate1 > rate2)
+                var rating1 = parts1.CalculateRating();
+                var rating2 = parts1.CalculateRating();
+                if (rating1 > rating2)
                 {
                     parts = parts1;
                 }

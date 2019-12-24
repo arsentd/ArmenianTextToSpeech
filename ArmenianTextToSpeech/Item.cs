@@ -16,9 +16,9 @@
         public string Trascription { get; set; }
 
         /// <summary>
-        /// Rate
+        /// Rating
         /// </summary>
-        public int Rate { get; set; }
+        public int Rating { get; set; }
 
         /// <summary>
         /// Part constructor
