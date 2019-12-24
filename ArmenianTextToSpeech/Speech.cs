@@ -57,13 +57,13 @@ namespace ArmenianTextToSpeech
         }
 
         /// <summary>
-        /// Splits given word to parts
+        /// Splits given word to word parts
         /// </summary>
         /// <param name="word">Word</param>
-        /// <returns>List of parts</returns>
-        private ItemList WordToParts(string word)
+        /// <returns>List of word parts</returns>
+        private WordPartList WordToParts(string word)
         {
-            var parts = new ItemList();
+            var parts = new WordPartList();
             if (word.Length <= 2)
             {
                 parts.Add(dictionary.GetPart(word));
@@ -78,8 +78,8 @@ namespace ArmenianTextToSpeech
             }
             else if (word.Length % 2 == 1)
             {
-                var parts1 = new ItemList();
-                var parts2 = new ItemList();
+                var parts1 = new WordPartList();
+                var parts2 = new WordPartList();
                 for (var i = 0; i < word.Length; i += 2)
                 {
                     if (i == 0)
@@ -120,16 +120,16 @@ namespace ArmenianTextToSpeech
         }
 
         /// <summary>
-        /// Combines the given parts to word
+        /// Combines the given word parts to word
         /// </summary>
-        /// <param name="parts">Parts</param>
+        /// <param name="parts">Word parts list</param>
         /// <returns>Word</returns>
-        private string PartsToWord(ItemList parts)
+        private string PartsToWord(WordPartList parts)
         {
             var word = string.Empty;
             foreach (var part in parts)
             {
-                word += part.Trascription + "-";
+                word += part.PartInEnglishTranscription + "-";
             }
             word = word.Remove(word.Length - 1, 1);
             return word;

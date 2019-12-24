@@ -3,14 +3,14 @@
 namespace ArmenianTextToSpeech
 {
     /// <summary>
-    /// List if parts object
+    /// List if word parts object
     /// </summary>
-    public class ItemList : List<Item>
+    public class WordPartList : List<WordPart>
     {
         /// <summary>
-        /// Calculates all parts rating sum
+        /// Calculates all word parts rating sum
         /// </summary>
-        /// <returns>Parts rating sum</returns>
+        /// <returns>Word parts rating sum</returns>
         public int CalculateRating()
         {
             var rating = 0;

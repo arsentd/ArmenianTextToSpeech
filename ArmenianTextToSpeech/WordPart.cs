@@ -3,17 +3,17 @@
     /// <summary>
     /// Part object
     /// </summary>
-    public class Item
+    public class WordPart
     {
         /// <summary>
-        /// Value
+        /// Part in armenian
         /// </summary>
-        public string Part { get; set; }
+        public string PartInArmenian { get; set; }
 
         /// <summary>
-        /// Trascription
+        /// Part in english transcription
         /// </summary>
-        public string Trascription { get; set; }
+        public string PartInEnglishTranscription { get; set; }
 
         /// <summary>
         /// Rating
@@ -34,16 +34,16 @@
         /// </summary>
         private void CorrectVoToOProblem()
         {
-            var length = Part.Length - 1;
-            if (Part[length] == 'ո')
+            var length = PartInArmenian.Length - 1;
+            if (PartInArmenian[length] == 'ո')
             {
-                Part = Part.Remove(length, 1).Insert(length, "օ");
+                PartInArmenian = PartInArmenian.Remove(length, 1).Insert(length, "օ");
             }
             for (var i = 1; i < length; i++)
             {
-                if (Part[i] == 'ո' && Part[i + 1] != 'ւ')
+                if (PartInArmenian[i] == 'ո' && PartInArmenian[i + 1] != 'ւ')
                 {
-                    Part = Part.Remove(i, 1).Insert(i, "օ");
+                    PartInArmenian = PartInArmenian.Remove(i, 1).Insert(i, "օ");
                 }
             }
         }
@@ -53,9 +53,9 @@
         /// </summary>
         private void CorrectYToEmptyProblem()
         {
-            if (Part.StartsWith("ը"))
+            if (PartInArmenian.StartsWith("ը"))
             {
-                Part.Remove(0, 1);
+                PartInArmenian.Remove(0, 1);
             }
         }
     }
