@@ -89,7 +89,7 @@ namespace ArmenianTextToSpeech
                     }
                     else
                     {
-                        var partText = word[i].ToString() + word[i + 1].ToString();
+                        var partText = word[i - 1].ToString() + word[i].ToString();
                         parts1.Add(dictionary.GetPart(partText));
                     }
 
