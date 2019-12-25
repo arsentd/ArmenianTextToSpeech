@@ -1,11 +1,11 @@
 # ArmenianTextToSpeech.dll
-This library provides Text to Speech functionality for Armenian language.<br />
+Provides Text to Speech functionality for Armenian language.<br />
 The library uses .NET *System.Speech* library which does not provide text to speech functionality for Armenian language.
 
 ## Speech Class
 *Namespace: ArmenianTextToSpeech* <br />
 *Assembly: ArmenianTextToSpeech.dll* <br />
-Provides access to the functionality of an Armenian text to speech engine.
+Provides access to the functionality of an text to speech engine for Armenian language.
 
 ### Constructors
 #### ``` public Speech(); ```
@@ -35,5 +35,5 @@ speech.Speak(word, speed);
 ```
 
 # Visualizer.exe
-Visualizer Tool uses ArmenianTextToSpeech.dll library and provides simple UI to speak Armenian word.
+Visualizer Tool uses *ArmenianTextToSpeech.dll* library and provides simple UI to speak an Armenian word.
 ![Untitled](https://user-images.githubusercontent.com/46923880/71436857-8bfc2280-2708-11ea-9ec6-b78c7fd8a463.jpg)
