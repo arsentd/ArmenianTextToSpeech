@@ -9,12 +9,12 @@ namespace ArmenianTextToSpeech
     public class Dictionary
     {
         /// <summary>
-        /// Dictionary word parts
+        /// Word parts
         /// </summary>
         public WordPartList WordParts { get; private set; }
 
         /// <summary>
-        /// Loads word parts for the dictionary using given json dictionary string
+        /// Loads word parts for the dictionary using given dictionary json string
         /// </summary>
         /// <param name="dictionary">Dictionary json string</param>
         public void LoadParts(string dictionary)

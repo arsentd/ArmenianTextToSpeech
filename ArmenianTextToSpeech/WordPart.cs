@@ -21,7 +21,7 @@
         public int Rating { get; set; }
 
         /// <summary>
-        /// Part constructor
+        /// Word part constructor
         /// </summary>
         public void PartCorrection()
         {

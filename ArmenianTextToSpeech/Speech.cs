@@ -136,7 +136,7 @@ namespace ArmenianTextToSpeech
         }
 
         /// <summary>
-        /// Check if the given word is not empty and do not contain spaces. Also checks if only armenian letters are used.
+        /// Check if the given word is not empty and does not contain spaces. Also checks if only armenian letters are used.
         /// </summary>
         /// <param name="word">Word</param>
         /// <returns>If word is correct - true, else - false</returns>

@@ -3,7 +3,7 @@
 namespace ArmenianTextToSpeech
 {
     /// <summary>
-    /// List if word parts object
+    /// List of word part objects
     /// </summary>
     public class WordPartList : List<WordPart>
     {
