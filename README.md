@@ -1,11 +1,11 @@
 # ArmenianTextToSpeech.dll
-This library provides Text to Speech functionality for Armenian language.<br />
+Provides Text to Speech functionality for Armenian language.<br />
 The library uses .NET *System.Speech* library which does not provide text to speech functionality for Armenian language.
 
 ## Speech Class
 *Namespace: ArmenianTextToSpeech* <br />
 *Assembly: ArmenianTextToSpeech.dll* <br />
-Provides access to the functionality of an Armenian text to speech engine.
+Provides access to the functionality of an text to speech engine for Armenian language.
 
 ### Constructors
 #### ``` public Speech(); ```
