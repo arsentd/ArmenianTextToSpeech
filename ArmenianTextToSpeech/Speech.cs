@@ -43,8 +43,8 @@ namespace ArmenianTextToSpeech
             word = word.ToLower();
 
             CheckWord(word);
-            CorrectVoToOProblem(word);
-            CorrectYToEmptyProblem(word);
+            word = CorrectVoToOProblem(word);
+            word = CorrectDualLetterUProblem(word);
 
             var parts = WordToParts(word);
             var wordToSpeak = PartsToWord(parts);
@@ -162,7 +162,9 @@ namespace ArmenianTextToSpeech
         /// <summary>
         /// Solves 'ո' letter to 'օ' letter problem 
         /// </summary>
-        private void CorrectVoToOProblem(string word)
+        /// <param name="word">Word</param>
+        /// <returns>Word with solved 'ո' letter to 'օ' letter problem</returns>
+        private string CorrectVoToOProblem(string word)
         {
             var length = word.Length - 1;
             if (word[length] == 'ո')
@@ -176,17 +178,17 @@ namespace ArmenianTextToSpeech
                     word = word.Remove(i, 1).Insert(i, "օ");
                 }
             }
+            return word;
         }
 
         /// <summary>
-        /// Solves first letter 'ը' problem
+        /// Solves letter 'ու' to 'ւ' problem
         /// </summary>
-        private void CorrectYToEmptyProblem(string word)
+        /// <param name="word">Word</param>
+        /// <returns>Word with solved letter 'ու' to 'ւ' problem</returns>
+        private string CorrectDualLetterUProblem(string word)
         {
-            if (word.StartsWith("ը"))
-            {
-                word.Remove(0, 1);
-            }
+            return word.Replace("ու", "ւ");
         }
     }
 }
