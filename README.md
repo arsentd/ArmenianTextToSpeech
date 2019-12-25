@@ -35,5 +35,5 @@ speech.Speak(word, speed);
 ```
 
 # Visualizer.exe
-Visualizer Tool uses ArmenianTextToSpeech.dll library and provides simple UI to speak Armenian word.
+Visualizer Tool uses *ArmenianTextToSpeech.dll* library and provides simple UI to speak an Armenian word.
 ![Untitled](https://user-images.githubusercontent.com/46923880/71436857-8bfc2280-2708-11ea-9ec6-b78c7fd8a463.jpg)
