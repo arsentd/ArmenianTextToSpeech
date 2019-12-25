@@ -41,19 +41,17 @@ namespace ArmenianTextToSpeech
         public void Speak(string word, int speed)
         {
             word = word.ToLower();
-            if (IsCorrectWord(word))
-            {
-                var parts = WordToParts(word);
-                var wordToSpeak = PartsToWord(parts);
 
-                var synthesizer = new SpeechSynthesizer();
-                synthesizer.Rate = speed;
-                synthesizer.SpeakAsync(wordToSpeak);
-            }
-            else
-            {
-                throw new Exception("Word is incorrect.");
-            }
+            CheckWord(word);
+            CorrectVoToOProblem(word);
+            CorrectYToEmptyProblem(word);
+
+            var parts = WordToParts(word);
+            var wordToSpeak = PartsToWord(parts);
+
+            var synthesizer = new SpeechSynthesizer();
+            synthesizer.Rate = speed;
+            synthesizer.SpeakAsync(wordToSpeak);
         }
 
         /// <summary>
@@ -136,27 +134,59 @@ namespace ArmenianTextToSpeech
         }
 
         /// <summary>
-        /// Check if the given word is not empty and does not contain spaces. Also checks if only armenian letters are used.
+        /// Check if the given word is not empty and does not contain spaces and if only armenian letters are used.
         /// </summary>
         /// <param name="word">Word</param>
-        /// <returns>If word is correct - true, else - false</returns>
-        private bool IsCorrectWord(string word)
+        private void CheckWord(string word)
         {
-            if (string.IsNullOrWhiteSpace(word) || word.Contains(" "))
+            if (string.IsNullOrWhiteSpace(word))
             {
-                return false;
+                throw new ArgumentNullException(nameof(word) ,"Word can not be empty.");
+            }
+            else if (word.Contains(" "))
+            {
+                throw new ArgumentException("Word can not contain spaces.", nameof(word));
             }
             else
             {
                 foreach (var symbol in word)
                 {
-                    if (!((symbol >= 'ա' && symbol <= 'ֆ') || (symbol >= 'Ա' && symbol <= 'Ֆ')))
+                    if (!((symbol >= 'ա' && symbol <= 'և') || (symbol >= 'Ա' && symbol <= 'Ֆ')))
                     {
-                        return false;
+                        throw new ArgumentOutOfRangeException(nameof(word), "Word must contain only Armenian letters.");
                     }
                 }
             }
-            return true;
+        }
+
+        /// <summary>
+        /// Solves 'ո' letter to 'օ' letter problem 
+        /// </summary>
+        private void CorrectVoToOProblem(string word)
+        {
+            var length = word.Length - 1;
+            if (word[length] == 'ո')
+            {
+                word = word.Remove(length, 1).Insert(length, "օ");
+            }
+            for (var i = 1; i < length; i++)
+            {
+                if (word[i] == 'ո' && word[i + 1] != 'ւ')
+                {
+                    word = word.Remove(i, 1).Insert(i, "օ");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Solves first letter 'ը' problem
+        /// </summary>
+        private void CorrectYToEmptyProblem(string word)
+        {
+            if (word.StartsWith("ը"))
+            {
+                word.Remove(0, 1);
+            }
         }
     }
 }

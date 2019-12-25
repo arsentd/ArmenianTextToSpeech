@@ -19,44 +19,5 @@
         /// Rating
         /// </summary>
         public int Rating { get; set; }
-
-        /// <summary>
-        /// Word part constructor
-        /// </summary>
-        public void PartCorrection()
-        {
-            CorrectVoToOProblem();
-            CorrectYToEmptyProblem();
-        }
-
-        /// <summary>
-        /// Solves 'ո' letter to 'օ' letter problem 
-        /// </summary>
-        private void CorrectVoToOProblem()
-        {
-            var length = PartInArmenian.Length - 1;
-            if (PartInArmenian[length] == 'ո')
-            {
-                PartInArmenian = PartInArmenian.Remove(length, 1).Insert(length, "օ");
-            }
-            for (var i = 1; i < length; i++)
-            {
-                if (PartInArmenian[i] == 'ո' && PartInArmenian[i + 1] != 'ւ')
-                {
-                    PartInArmenian = PartInArmenian.Remove(i, 1).Insert(i, "օ");
-                }
-            }
-        }
-
-        /// <summary>
-        /// Solves first letter 'ը' problem
-        /// </summary>
-        private void CorrectYToEmptyProblem()
-        {
-            if (PartInArmenian.StartsWith("ը"))
-            {
-                PartInArmenian.Remove(0, 1);
-            }
-        }
     }
 }

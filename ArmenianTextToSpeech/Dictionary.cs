@@ -20,10 +20,6 @@ namespace ArmenianTextToSpeech
         public void LoadParts(string dictionary)
         {
             WordParts = JsonConvert.DeserializeObject<WordPartList>(dictionary);
-            foreach (var item in WordParts)
-            {
-                item.PartCorrection();
-            }
         }
 
         /// <summary>
@@ -33,7 +29,7 @@ namespace ArmenianTextToSpeech
         /// <returns>Word part object</returns>
         public WordPart GetPart(string part)
         {
-            return WordParts.FirstOrDefault(i => i.PartInArmenian.ToLower() == part);
+            return WordParts.First(p => p.PartInArmenian.ToLower() == part);
         }
     }
 }
