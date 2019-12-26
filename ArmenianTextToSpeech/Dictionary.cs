@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
 
 namespace ArmenianTextToSpeech
@@ -11,7 +12,7 @@ namespace ArmenianTextToSpeech
         /// <summary>
         /// Word parts
         /// </summary>
-        public WordPartList WordParts { get; private set; }
+        public List<WordPart> WordParts { get; private set; }
 
         /// <summary>
         /// Loads word parts for the dictionary using given dictionary json string
@@ -19,7 +20,7 @@ namespace ArmenianTextToSpeech
         /// <param name="dictionary">Dictionary json string</param>
         public void LoadParts(string dictionary)
         {
-            WordParts = JsonConvert.DeserializeObject<WordPartList>(dictionary);
+            WordParts = JsonConvert.DeserializeObject<List<WordPart>>(dictionary);
         }
 
         /// <summary>

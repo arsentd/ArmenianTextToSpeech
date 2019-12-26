@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Speech.Synthesis;
 using System.Text;
 
@@ -59,9 +61,9 @@ namespace ArmenianTextToSpeech
         /// </summary>
         /// <param name="word">Word</param>
         /// <returns>List of word parts</returns>
-        private WordPartList WordToParts(string word)
+        private List<WordPart> WordToParts(string word)
         {
-            var parts = new WordPartList();
+            var parts = new List<WordPart>();
             if (word.Length <= 2)
             {
                 parts.Add(dictionary.GetPart(word));
@@ -76,8 +78,8 @@ namespace ArmenianTextToSpeech
             }
             else if (word.Length % 2 == 1)
             {
-                var parts1 = new WordPartList();
-                var parts2 = new WordPartList();
+                var parts1 = new List<WordPart>();
+                var parts2 = new List<WordPart>();
                 for (var i = 0; i < word.Length; i += 2)
                 {
                     if (i == 0)
@@ -103,8 +105,8 @@ namespace ArmenianTextToSpeech
                     }
                 }
 
-                var rating1 = parts1.CalculateRating();
-                var rating2 = parts1.CalculateRating();
+                var rating1 = parts1.Sum(p => p.Rating);
+                var rating2 = parts2.Sum(p => p.Rating);
                 if (rating1 > rating2)
                 {
                     parts = parts1;
@@ -122,7 +124,7 @@ namespace ArmenianTextToSpeech
         /// </summary>
         /// <param name="parts">Word parts list</param>
         /// <returns>Word</returns>
-        private string PartsToWord(WordPartList parts)
+        private string PartsToWord(List<WordPart> parts)
         {
             var word = string.Empty;
             foreach (var part in parts)
