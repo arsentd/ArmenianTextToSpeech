@@ -6,12 +6,12 @@
     public class WordPart
     {
         /// <summary>
-        /// Part in armenian
+        /// Part in Armenian
         /// </summary>
         public string PartInArmenian { get; set; }
 
         /// <summary>
-        /// Part in english transcription
+        /// Part in English transcription
         /// </summary>
         public string PartInEnglishTranscription { get; set; }
 

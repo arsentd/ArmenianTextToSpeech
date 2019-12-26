@@ -23,7 +23,7 @@ namespace ArmenianTextToSpeech
         {
             var dictionaryString = Encoding.UTF8.GetString(Properties.Resources.dictionary);
             dictionary = new Dictionary();
-            dictionary.LoadParts(dictionaryString);
+            dictionary.LoadWordParts(dictionaryString);
         }
 
         /// <summary>
@@ -66,14 +66,14 @@ namespace ArmenianTextToSpeech
             var parts = new List<WordPart>();
             if (word.Length <= 2)
             {
-                parts.Add(dictionary.GetPart(word));
+                parts.Add(dictionary.GetWordPart(word));
             }
             else if (word.Length % 2 == 0)
             {
                 for (var i = 0; i < word.Length; i += 2)
                 {
                     var partText = word[i].ToString() + word[i + 1].ToString();
-                    parts.Add(dictionary.GetPart(partText));
+                    parts.Add(dictionary.GetWordPart(partText));
                 }
             }
             else if (word.Length % 2 == 1)
@@ -85,23 +85,23 @@ namespace ArmenianTextToSpeech
                     if (i == 0)
                     {
                         var partText = word[0].ToString();
-                        parts1.Add(dictionary.GetPart(partText));
+                        parts1.Add(dictionary.GetWordPart(partText));
                     }
                     else
                     {
                         var partText = word[i - 1].ToString() + word[i].ToString();
-                        parts1.Add(dictionary.GetPart(partText));
+                        parts1.Add(dictionary.GetWordPart(partText));
                     }
 
                     if (i != word.Length - 1)
                     {
                         var partText = word[i].ToString() + word[i + 1].ToString();
-                        parts2.Add(dictionary.GetPart(partText));
+                        parts2.Add(dictionary.GetWordPart(partText));
                     }
                     else
                     {
                         var partText = word[word.Length - 1].ToString();
-                        parts2.Add(dictionary.GetPart(partText));
+                        parts2.Add(dictionary.GetWordPart(partText));
                     }
                 }
 

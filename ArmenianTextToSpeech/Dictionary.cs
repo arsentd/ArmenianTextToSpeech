@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace ArmenianTextToSpeech
 {
     /// <summary>
-    /// Dictionary object
+    /// Dictionary of word parts object
     /// </summary>
     public class Dictionary
     {
@@ -18,7 +18,7 @@ namespace ArmenianTextToSpeech
         /// Loads word parts for the dictionary using given dictionary json string
         /// </summary>
         /// <param name="dictionary">Dictionary json string</param>
-        public void LoadParts(string dictionary)
+        public void LoadWordParts(string dictionary)
         {
             WordParts = JsonConvert.DeserializeObject<List<WordPart>>(dictionary);
         }
@@ -26,11 +26,11 @@ namespace ArmenianTextToSpeech
         /// <summary>
         /// Get word part object by part in armenian value
         /// </summary>
-        /// <param name="part">Part in armenian value</param>
+        /// <param name="partInArmenian">Part in armenian value</param>
         /// <returns>Word part object</returns>
-        public WordPart GetPart(string part)
+        public WordPart GetWordPart(string partInArmenian)
         {
-            return WordParts.First(p => p.PartInArmenian.ToLower() == part);
+            return WordParts.First(p => p.PartInArmenian.ToLower() == partInArmenian.ToLower());
         }
     }
 }
